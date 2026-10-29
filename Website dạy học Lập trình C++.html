@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Website dạy học Lập trình C++</title>
+<style>
+:root{--bg:#f6f7fb;--sf:#fff;--tx:#1d2433;--mu:#667085;--pr:#2457d6;--bd:#dde1ea;--ok:#12805c;--er:#c0392b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141c;--sf:#1a202b;--tx:#e8ecf3;--mu:#98a2b3;--pr:#6c93ff;--bd:#2c3442;--ok:#38c793;--er:#ff7b6b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10141c;--sf:#1a202b;--tx:#e8ecf3;--mu:#98a2b3;--pr:#6c93ff;--bd:#2c3442;--ok:#38c793;--er:#ff7b6b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+nav{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:var(--sf);border-bottom:1px solid var(--bd);padding:10px 16px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav b{margin-right:auto}nav a{color:var(--tx);text-decoration:none;padding:6px 12px;border-radius:8px}nav a.on,nav a:hover{background:var(--pr);color:#fff}
+main{max-width:920px;margin:0 auto;padding:20px 16px 60px}section{display:none}section.on{display:block}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:12px 0}
+h1,h2,h3{line-height:1.25}input,select,textarea,button{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:8px 10px}
+input,select,textarea{width:100%;margin:4px 0 10px}textarea{font-family:ui-monospace,Menlo,Consolas,monospace;min-height:190px;font-size:14px}
+button{cursor:pointer;background:var(--pr);color:#fff;border:0;padding:9px 16px}button.s{background:var(--bd);color:var(--tx)}button.d{background:var(--er)}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.tag{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--bd)}
+.ok{color:var(--ok);font-weight:600}.er{color:var(--er);font-weight:600}.mu{color:var(--mu)}.sc{font-size:34px;font-weight:700;color:var(--pr)}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:left;font-size:14px}
+label.p{display:block;border:1px solid var(--bd);border-radius:10px;padding:10px;margin:6px 0;cursor:pointer}label.p input{width:auto;margin:0 8px 0 0}
+.av{width:150px;height:150px;border-radius:50%;object-fit:cover;background:var(--bd);display:block}
+pre{white-space:pre-wrap;margin:4px 0}
+</style></head><body>
+<nav><b>💻 Lập trình C++</b>
+<a href="#home">Trang chủ</a><a href="#kiemtra">Kiểm tra</a><a href="#thi">Thi</a><a href="#admin">Chấm điểm trực tiếp</a><a href="#hoso">Hồ sơ</a><a href="#bt43">Bài tập 43</a></nav>
+<main>
+<section id="home">
+<h1>Hỗ trợ dạy học học phần Lập trình C++</h1>
+<p class="mu">Phần Bài tập thực hành: sinh viên làm bài, nộp lời giải và nhận điểm ngay.</p>
+<div class="row">
+<div class="card"><h3>📝 Kiểm tra</h3><p>Chọn <b>1 bài</b> từ danh sách (Dễ / Trung bình / Khó), nộp bài và nhận điểm.</p><a href="#kiemtra"><button>Vào Kiểm tra</button></a></div>
+<div class="card"><h3>🎯 Thi</h3><p>Chọn <b>2 đến 3 bài</b>, điểm thi là trung bình các bài đã chọn.</p><a href="#thi"><button>Vào Thi</button></a></div>
+<div class="card"><h3>⚙️ Chấm điểm trực tiếp</h3><p>Admin nhập danh sách bài tập và bộ test (mỗi bài thường 5 test, mỗi test đúng được 2 điểm).</p><a href="#admin"><button>Vào trang Admin</button></a></div>
+</div>
+<div class="card"><h3>Quy tắc chấm</h3><p>Hệ thống chạy lời giải với từng bộ test, so sánh đầu ra với đáp án. Mỗi bài 10 điểm = số test × điểm mỗi test.</p>
+<p class="mu">Lưu ý: trình chấm chạy ngay trong trình duyệt, hỗ trợ tập con C++ cơ bản (biến, if, for, while, hàm, cin/cout, chưa hỗ trợ mảng, vector, <code>string</code> methods). Để chấm C++ đầy đủ cần gắn máy chủ biên dịch (ví dụ Judge0).</p></div>
+</section>
+
+<section id="kiemtra"><h2>📝 Kiểm tra</h2><div id="kt"></div></section>
+<section id="thi"><h2>🎯 Thi</h2><div id="th"></div></section>
+
+<section id="admin"><h2>⚙️ Chấm điểm trực tiếp (Admin)</h2><div id="ad"></div></section>
+
+<section id="hoso"><h2>Trang cá nhân</h2>
+<div class="card" style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+<img id="av" class="av" alt="Ảnh đại diện">
+<div style="flex:1;min-width:220px"><h2 id="pn" style="margin:0"></h2><p id="pm" class="mu"></p>
+<p><a href="#bt43"><button>Xem kết quả bài tập 43</button></a></p></div></div>
+<div class="card"><h3>Cập nhật thông tin</h3>
+<label>Họ tên<input id="fn"></label><label>Mã số SV<input id="fm"></label><label>Hình ảnh<input id="ff" type="file" accept="image/*"></label>
+<button onclick="saveProfile()">Lưu</button></div></section>
+
+<section id="bt43"><h2>Kết quả bài tập 43</h2><div class="card">
+<label>Liên kết kết quả (nếu có)<input id="l43" placeholder="https://..."></label>
+<label>Mô tả / mã nguồn / kết quả<textarea id="n43"></textarea></label>
+<button onclick="save43()">Lưu</button> <a id="g43" target="_blank" rel="noopener"></a></div></section>
+</main>
+<script>
+const $=s=>document.querySelector(s),LV=['Dễ','Trung bình','Khó'],PW='admin123';
+const get=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
+const set=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const e=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const T=(a,b)=>[a,b];
+const seed=[
+{id:1,title:'Tổng hai số',lv:0,uses:['kt','thi'],st:'Nhập hai số nguyên a, b. In ra a + b.',tests:[T('1 2','3'),T('10 20','30'),T('-5 5','0'),T('100 250','350'),T('-7 -3','-10')]},
+{id:2,title:'Chẵn hay lẻ',lv:0,uses:['kt','thi'],st:'Nhập số nguyên n. In "Chan" nếu n chẵn, ngược lại in "Le".',tests:[T('4','Chan'),T('7','Le'),T('0','Chan'),T('13','Le'),T('100','Chan')]},
+{id:3,title:'Số lớn nhất trong 3 số',lv:1,uses:['kt','thi'],st:'Nhập ba số nguyên a, b, c. In ra số lớn nhất.',tests:[T('1 2 3','3'),T('9 4 6','9'),T('5 8 5','8'),T('-1 -5 -3','-1'),T('7 7 7','7')]},
+{id:4,title:'Giai thừa',lv:1,uses:['kt','thi'],st:'Nhập n (0 ≤ n ≤ 12). In ra n!.',tests:[T('0','1'),T('1','1'),T('5','120'),T('8','40320'),T('12','479001600')]},
+{id:5,title:'Số nguyên tố',lv:2,uses:['kt','thi'],st:'Nhập n. In "YES" nếu n là số nguyên tố, ngược lại in "NO".',tests:[T('2','YES'),T('1','NO'),T('17','YES'),T('21','NO'),T('97','YES')]},
+{id:6,title:'Đảo ngược số',lv:2,uses:['kt','thi'],st:'Nhập số nguyên dương n. In ra số đảo ngược các chữ số của n.',tests:[T('123','321'),T('5','5'),T('1200','21'),T('9876','6789'),T('100','1')]}];
+let P=get('probs',seed);
+// ---- Trình chấm: chuyển tập con C++ sang JS ----
+function tr(src){
+ const Ty='(?:unsigned\\s+)?(?:long\\s+long|long|int|double|float|bool|string|char|void)';
+ let c=src.replace(/#include.*$/gm,'').replace(/using\s+namespace\s+std;/g,'');
+ const ints=new Set();
+ c.replace(/\b(?:long\s+long|long|int)\s+(\w+)/g,(m,n)=>ints.add(n));
+ c.replace(/\b(?:long\s+long|long|int)\s+([^;(){}]+);/g,(m,l)=>l.split(',').forEach(x=>ints.add(x.split('=')[0].trim())));
+ c=c.replace(new RegExp('\\b'+Ty+'\\s+(\\w+)\\s*\\(([^)]*)\\)\\s*\\{','g'),(m,n,p)=>'function '+n+'('+p.replace(new RegExp('(?:const\\s+)?'+Ty+'\\s*[&*]?\\s*(\\w+)','g'),'$1')+'){');
+ c=c.replace(/cin\s*>>\s*([^;]+);/g,(m,a)=>a.split('>>').map(v=>v.trim()+'=$rd();').join(''));
+ c=c.replace(/cout\s*<<\s*([^;]+);/g,(m,a)=>a.split('<<').map(v=>{v=v.trim();return '$o('+(v==='endl'?'"\\n"':v)+');'}).join(''));
+ c=c.replace(new RegExp('\\b'+Ty+'\\s+(?=\\w)','g'),'let ');
+ c=c.replace(/\b(\w+)\s*(\/?=)\s*([^;=][^;]*);/g,(m,n,op,x)=>!ints.has(n)?m:op==='/='?n+'=Math.trunc('+n+'/('+x+'));':n+'=Math.trunc('+x+');');
+ c=c.replace(/\b(for|while)\s*\([^)]*\)\s*\{/g,m=>m+'if(++$s>3e6)throw "Quá thời gian (vòng lặp vô hạn?)";');
+ return 'let $s=0;'+c+'\nif(typeof main==="function")main();';
+}
+function run(code,inp){
+ let out='',t=inp.split(/\s+/).filter(Boolean),p=0;
+ const rd=()=>{const x=t[p++];return x!==undefined&&!isNaN(x)?Number(x):x},o=v=>{out+=typeof v==='boolean'?+v:v};
+ try{new Function('$rd','$o',tr(code))(rd,o);return{out}}catch(x){return{err:String(x.message||x)}}
+}
+const norm=s=>String(s).trim().replace(/\s+/g,' ');
+function grade(pr,code){
+ const pt=10/pr.tests.length;let sc=0,det=[];
+ pr.tests.forEach((t,i)=>{const r=run(code,t[0]);const ok=!r.err&&norm(r.out)===norm(t[1]);if(ok)sc+=pt;det.push({i:i+1,ok,err:r.err})});
+ return{sc:Math.round(sc*100)/100,det};
+}
+// ---- Kiểm tra / Thi ----
+const ST={kt:{},th:{}};
+function ex(mode){
+ const box=$(mode==='kt'?'#kt':'#th'),s=ST[mode],info=get('info',{name:'',mssv:''});
+ const list=P.filter(p=>p.uses.includes(mode==='kt'?'kt':'thi'));
+ if(!s.go){
+  box.innerHTML=`<div class="card"><h3>Thông tin sinh viên</h3>
+  <label>Họ tên<input id="${mode}n" value="${e(info.name)}"></label><label>Mã SV<input id="${mode}m" value="${e(info.mssv)}"></label>
+  <label>Phần<select onchange="location.hash=this.value"><option value="kiemtra" ${mode==='kt'?'selected':''}>Kiểm tra (1 bài)</option><option value="thi" ${mode==='th'?'selected':''}>Thi (2–3 bài)</option></select></label>
+  <h3>Chọn bài tập ${mode==='kt'?'(1 bài)':'(2 đến 3 bài)'}</h3>`+
+  (list.length?LV.map((l,i)=>{const a=list.filter(p=>p.lv===i);return a.length?`<h4>${l}</h4>`+a.map(p=>`<label class="p"><input type="${mode==='kt'?'radio':'checkbox'}" name="${mode}c" value="${p.id}"><b>${e(p.title)}</b> <span class="tag">${l}</span><pre class="mu">${e(p.st)}</pre></label>`).join(''):''}).join(''):'<p class="mu">Chưa có bài tập. Admin hãy thêm bài.</p>')+
+  `<button onclick="start('${mode}')">Bắt đầu làm bài</button> <span id="${mode}e" class="er"></span></div>`;return}
+ if(s.res){box.innerHTML=`<div class="card"><h3>Kết quả: ${e(s.who.name)} (${e(s.who.mssv)})</h3><div class="sc">${s.res.total} / 10</div>`+
+  s.res.items.map(r=>`<div class="card"><b>${e(r.title)}</b> — ${r.sc}/10<div>${r.det.map(d=>`<span class="${d.ok?'ok':'er'}">Test ${d.i}: ${d.ok?'Đúng (+'+(10/r.det.length)+')':'Sai'}</span>`).join(' · ')}</div>${r.det.find(d=>d.err)?`<div class="er">Lỗi: ${e(r.det.find(d=>d.err).err)}</div>`:''}</div>`).join('')+
+  `<button class="s" onclick="ST.${mode}={};ex('${mode}')">Làm lại / sinh viên khác</button></div>`;return}
+ box.innerHTML=`<div class="card mu">SV: <b>${e(s.who.name)}</b> — ${e(s.who.mssv)}</div>`+s.ids.map(id=>{const p=P.find(x=>x.id==id);return`<div class="card"><h3>${e(p.title)} <span class="tag">${LV[p.lv]}</span></h3><pre>${e(p.st)}</pre>
+  <textarea id="c${id}" spellcheck="false">#include <iostream>\nusing namespace std;\n\nint main() {\n    \n    return 0;\n}</textarea></div>`}).join('')+`<button onclick="submit('${mode}')">Nộp bài</button>`;
+}
+function start(mode){
+ const s=ST[mode],n=$('#'+mode+'n').value.trim(),m=$('#'+mode+'m').value.trim(),ids=[...document.querySelectorAll(`input[name=${mode}c]:checked`)].map(i=>i.value),er=$('#'+mode+'e');
+ if(!n||!m)return er.textContent='Vui lòng nhập Họ tên và Mã SV.';
+ if(mode==='kt'&&ids.length!==1)return er.textContent='Phần Kiểm tra: chọn đúng 1 bài.';
+ if(mode==='th'&&(ids.length<2||ids.length>3))return er.textContent='Phần Thi: chọn 2 đến 3 bài.';
+ set('info',{name:n,mssv:m});s.go=1;s.who={name:n,mssv:m};s.ids=ids;ex(mode);
+}
+function submit(mode){
+ const s=ST[mode];if(!confirm('Nộp bài? Sau khi nộp không sửa được.'))return;
+ const items=s.ids.map(id=>{const p=P.find(x=>x.id==id),g=grade(p,$('#c'+id).value);return{id:p.id,title:p.title,sc:g.sc,det:g.det}});
+ const total=Math.round(items.reduce((a,b)=>a+b.sc,0)/items.length*100)/100;
+ s.res={items,total};const log=get('subs',[]);log.push({...s.who,mode,total,items:items.map(i=>i.title+': '+i.sc),time:new Date().toLocaleString('vi-VN')});set('subs',log);ex(mode);
+}
+// ---- Admin ----
+let adok=false;
+function adm(){
+ const b=$('#ad');
+ if(!adok){b.innerHTML=`<div class="card"><label>Mật khẩu Admin<input id="pw" type="password"></label><button onclick="if($('#pw').value===PW){adok=true;adm()}else alert('Sai mật khẩu')">Đăng nhập</button><p class="mu">Mật khẩu mặc định: admin123 (đổi trong mã nguồn hằng số PW).</p></div>`;return}
+ const subs=get('subs',[]);
+ b.innerHTML=`<div class="card"><h3>Thêm bài tập</h3>
+ <label>Tên bài<input id="at"></label><label>Mức độ<select id="al">${LV.map((l,i)=>`<option value="${i}">${l}</option>`).join('')}</select></label>
+ <label>Đề bài<textarea id="as" style="min-height:80px"></textarea></label>
+ <label><input type="checkbox" id="u1" checked style="width:auto"> Dùng cho Kiểm tra</label> <label><input type="checkbox" id="u2" checked style="width:auto"> Dùng cho Thi</label>
+ <h4>Bộ test (mỗi test đúng = điểm bài / số test; 5 test → 2 điểm/test)</h4><div id="tl"></div>
+ <button class="s" onclick="addT()">+ Thêm test</button> <button onclick="addP()">Lưu bài tập</button></div>
+ <div class="card"><h3>Danh sách bài tập (${P.length})</h3><div class="wrap"><table><tr><th>Tên</th><th>Mức</th><th>Dùng cho</th><th>Số test</th><th></th></tr>`+
+ P.map(p=>`<tr><td>${e(p.title)}</td><td>${LV[p.lv]}</td><td>${p.uses.join(', ')}</td><td>${p.tests.length}</td><td><button class="d" onclick="delP(${p.id})">Xóa</button></td></tr>`).join('')+`</table></div></div>
+ <div class="card"><h3>Bài nộp (${subs.length})</h3><div class="wrap"><table><tr><th>Họ tên</th><th>Mã SV</th><th>Phần</th><th>Điểm</th><th>Chi tiết</th><th>Thời gian</th></tr>`+
+ subs.map(x=>`<tr><td>${e(x.name)}</td><td>${e(x.mssv)}</td><td>${x.mode==='kt'?'Kiểm tra':'Thi'}</td><td><b>${x.total}</b></td><td>${e(x.items.join('; '))}</td><td>${e(x.time)}</td></tr>`).join('')+`</table></div>
+ <button class="s" onclick="if(confirm('Xóa toàn bộ bài nộp?')){set('subs',[]);adm()}">Xóa bài nộp</button></div>`;
+ for(let i=0;i<5;i++)addT();
+}
+function addT(){const d=document.createElement('div');d.className='row';d.innerHTML='<label>Input<textarea class="ti" style="min-height:60px"></textarea></label><label>Output mong đợi<textarea class="to" style="min-height:60px"></textarea></label>';$('#tl').appendChild(d)}
+function addP(){
+ const ti=[...document.querySelectorAll('.ti')],to=[...document.querySelectorAll('.to')],tests=[];
+ ti.forEach((x,i)=>{if(x.value.trim()||to[i].value.trim())tests.push([x.value,to[i].value])});
+ const title=$('#at').value.trim();if(!title||!tests.length)return alert('Cần tên bài và ít nhất 1 test.');
+ const uses=[];if($('#u1').checked)uses.push('kt');if($('#u2').checked)uses.push('thi');
+ P.push({id:Date.now(),title,lv:+$('#al').value,st:$('#as').value,uses,tests});set('probs',P);adm();
+}
+function delP(id){if(confirm('Xóa bài này?')){P=P.filter(p=>p.id!==id);set('probs',P);adm()}}
+// ---- Hồ sơ & bài 43 ----
+function prof(){const p=get('prof',{name:'Họ tên của bạn',mssv:'Mã SV',img:''});
+ $('#pn').textContent=p.name;$('#pm').textContent='Mã số SV: '+p.mssv;$('#fn').value=p.name;$('#fm').value=p.mssv;
+ $('#av').src=p.img||'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"><rect width="150" height="150" fill="#ccd"/><circle cx="75" cy="58" r="26" fill="#99a"/><rect x="30" y="95" width="90" height="55" rx="28" fill="#99a"/></svg>')}
+function saveProfile(){const f=$('#ff').files[0],p=get('prof',{}),go=img=>{set('prof',{name:$('#fn').value,mssv:$('#fm').value,img});prof()};
+ if(f){const r=new FileReader();r.onload=()=>go(r.result);r.readAsDataURL(f)}else go(p.img||'')}
+function b43(){const d=get('b43',{l:'',n:''});$('#l43').value=d.l;$('#n43').value=d.n;const g=$('#g43');g.textContent=/^https?:\/\//.test(d.l)?'Mở kết quả ↗':'';g.href=d.l}
+function save43(){set('b43',{l:$('#l43').value,n:$('#n43').value});b43()}
+function route(){const h=(location.hash||'#home').slice(1);const id=document.getElementById(h)?h:'home';
+ document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id===id));
+ document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
+ if(id==='kiemtra')ex('kt');if(id==='thi')ex('th');if(id==='admin')adm();if(id==='hoso')prof();if(id==='bt43')b43()}
+addEventListener('hashchange',route);route();
+</script></body></html>
